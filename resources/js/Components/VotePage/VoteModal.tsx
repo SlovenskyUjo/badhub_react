@@ -11,7 +11,6 @@ export default function VoteModal() {
 
     const showAlert = (message: string) => {
         Swal.fire({
-            title: 'Error!',
             text: message,
             icon: 'error',
             toast: true,

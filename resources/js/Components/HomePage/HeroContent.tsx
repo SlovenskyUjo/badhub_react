@@ -42,16 +42,15 @@ const HeroContent = () => {
             navigator.clipboard.writeText(ipAddress)
                 .then(() => {
                     Swal.fire({
-                        title: 'Success!',
                         text: 'IP adresa skopírovaná',
                         icon: 'success',
-                        toast: false,
+                        toast: true,
                         position: 'top-end',
                         timer: 3000,
                         timerProgressBar: false,
                         background: '#000',  // Black background
                         color: '#fff',        // White text color
-                        iconColor: '#ff6b6b', // Custom red icon color
+                        iconColor: '#32de1b', // Custom red icon color
                         customClass: {
                             popup: 'custom-swal-popup',
                             title: 'custom-swal-title',
