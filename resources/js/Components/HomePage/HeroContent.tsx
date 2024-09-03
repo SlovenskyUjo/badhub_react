@@ -204,7 +204,7 @@ const HeroContent = () => {
 
             <motion.section
                 id="discord"
-                className="w-full bg-[#4468e4] text-white py-8"
+                className="w-full bg-[#0d0d13] text-white py-8"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.6 }}
