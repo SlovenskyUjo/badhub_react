@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { IoConstruct, IoGameControllerOutline } from "react-icons/io5";
 import { FaDiscord } from "react-icons/fa";
 import Swal from "sweetalert2";
+import '../../../css/app.css';
 
 const HeroContent = () => {
     const [presenceCount, setPresenceCount] = useState(null);
