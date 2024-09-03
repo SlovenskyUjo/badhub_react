@@ -204,7 +204,7 @@ const HeroContent = () => {
 
             <motion.section
                 id="discord"
-                className="w-full bg-[#252525] text-white py-8"
+                className="w-full bg-[#4468e4] text-white py-8"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.6 }}
@@ -231,7 +231,7 @@ const HeroContent = () => {
                         <a href="https://discord.com/invite/9vhUGpzrwt" target="_blank"
                            className="inline-flex items-center px-6 py-3 bg-white text-[#7289da] border border-transparent rounded-md font-semibold text-lg uppercase hover:bg-gray-200 transition ease-in-out duration-200"
                         >
-                            <i className="fab fa-discord mr-2"></i> Připojit se
+                            <FaDiscord className="mr-2" /> Připojit se
                         </a>
                     </div>
                 </div>
