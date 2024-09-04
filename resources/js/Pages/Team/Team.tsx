@@ -225,7 +225,7 @@ const Team: React.FC<Roles> = ({
                                         {capitalize(helper.primary_group)}
                                     </p>
                                     <p className="text-gray-400 tracking-wider text-xs italic mt-2 text-center">
-                                        „{helper.description}“
+                                        {helper.realname === 'Jakum11' ? `„${helper.description}“` : helper.description}
                                     </p>
                                 </div>
                             </motion.div>
@@ -268,7 +268,7 @@ const Team: React.FC<Roles> = ({
                                         {capitalize(builder.primary_group)}
                                     </p>
                                     <p className="text-gray-400 tracking-wider text-xs italic mt-2 text-center">
-                                        „{builder.description}“
+                                        {builder.description}
                                     </p>
                                 </div>
                             </motion.div>
@@ -311,7 +311,7 @@ const Team: React.FC<Roles> = ({
                                         {capitalize(youtuber.primary_group)}
                                     </p>
                                     <p className="text-gray-400 tracking-wider text-xs italic mt-2 text-center">
-                                        „{youtuber.description}“
+                                        {youtuber.description}
                                     </p>
                                 </div>
                             </motion.div>
