@@ -191,7 +191,7 @@ const Team: React.FC<Roles> = ({
                 </motion.div>
 
                 {/* Helper Team */}
-                <motion.div
+                n<motion.div
                     className="max-w-5xl mx-auto px-4 mb-[4rem]"
                     variants={containerVariants}
                     initial="hidden"
