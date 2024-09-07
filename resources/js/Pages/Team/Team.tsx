@@ -24,12 +24,12 @@ interface Roles {
 }
 
 const Team: React.FC<Roles> = ({
-   owners = [],
-   developers = [],
-   helpers = [],
-   builders = [],
-   youtubers = [],
-}) => {
+                                   owners = [],
+                                   developers = [],
+                                   helpers = [],
+                                   builders = [],
+                                   youtubers = [],
+                               }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -78,6 +78,13 @@ const Team: React.FC<Roles> = ({
         }
     };
 
+    const getSkinUrl = (realname: string, skinUrl: string) => {
+        if (realname === 'zekiCZ') {
+            return "https://visage.surgeplay.com/bust/256/X-Steve";
+        }
+        return skinUrl;
+    };
+
     return (
         <div className="min-h-screen flex flex-col">
             <Head title="Tým" />
@@ -123,12 +130,10 @@ const Team: React.FC<Roles> = ({
                                 style={boxStyle}
                                 variants={itemVariants}
                             >
-                                <img src={owner.skinUrl} alt="" className="w-[80px] mb-4 md:mb-0" />
+                                <img src={getSkinUrl(owner.realname, owner.skinUrl)} alt="" className="w-[80px] mb-4 md:mb-0" />
                                 <div className="flex flex-col items-center text-center md:items-center mx-auto">
                                     <p className="font-semibold text-white text-[18px] mb-[7px] flex items-center justify-center">
                                         {owner.realname}
-                                        <span
-                                            className={`w-3 relative top-[0.5px] h-3 rounded-full ml-2 ${owner.isLogged === 1 ? 'bg-green-500' : 'bg-red-500'}`}></span>
                                     </p>
                                     <p className="text-base font-[600] mx-auto text-white text-center rounded-[5px] shadow-[2px_2px_rgba(0,0,0,.3137254902)]"
                                        style={{
@@ -166,12 +171,10 @@ const Team: React.FC<Roles> = ({
                                 style={boxStyle}
                                 variants={itemVariants}
                             >
-                                <img src={developer.skinUrl} alt="" className="w-[80px] mb-4 md:mb-0" />
+                                <img src={getSkinUrl(developer.realname, developer.skinUrl)} alt="" className="w-[80px] mb-4 md:mb-0" />
                                 <div className="flex flex-col items-center text-center md:items-center mx-auto">
                                     <p className="font-semibold text-white text-[18px] mb-[7px] flex items-center justify-center">
                                         {developer.realname}
-                                        <span
-                                            className={`w-3 relative top-[0.5px] h-3 rounded-full ml-2 ${developer.isLogged === 1 ? 'bg-green-500' : 'bg-red-500'}`}></span>
                                     </p>
                                     <p className="text-base font-[600] mx-auto text-white text-center rounded-[5px] shadow-[2px_2px_rgba(0,0,0,.3137254902)]"
                                        style={{
@@ -191,7 +194,7 @@ const Team: React.FC<Roles> = ({
                 </motion.div>
 
                 {/* Helper Team */}
-                n<motion.div
+                <motion.div
                     className="max-w-5xl mx-auto px-4 mb-[4rem]"
                     variants={containerVariants}
                     initial="hidden"
@@ -213,8 +216,6 @@ const Team: React.FC<Roles> = ({
                                 <div className="flex flex-col items-center text-center md:items-center mx-auto">
                                     <p className="font-semibold text-white text-[18px] mb-[7px] flex items-center justify-center">
                                         {helper.realname}
-                                        <span
-                                            className={`w-3 relative top-[0.5px] h-3 rounded-full ml-2 ${helper.isLogged === 1 ? 'bg-green-500' : 'bg-red-500'}`}></span>
                                     </p>
                                     <p className="text-base font-[600] mx-auto text-white text-center rounded-[5px] shadow-[2px_2px_rgba(0,0,0,.3137254902)]"
                                        style={{
@@ -252,16 +253,14 @@ const Team: React.FC<Roles> = ({
                                 style={boxStyle}
                                 variants={itemVariants}
                             >
-                                <img src={builder.skinUrl} alt="" className="w-[80px] mb-4 md:mb-0" />
+                                <img src={getSkinUrl(builder.realname, builder.skinUrl)} alt="" className="w-[80px] mb-4 md:mb-0" />
                                 <div className="flex flex-col items-center text-center md:items-center mx-auto">
                                     <p className="font-semibold text-white text-[18px] mb-[7px] flex items-center justify-center">
                                         {builder.realname}
-                                        <span
-                                            className={`w-3 relative top-[0.5px] h-3 rounded-full ml-2 ${builder.isLogged === 1 ? 'bg-green-500' : 'bg-red-500'}`}></span>
                                     </p>
                                     <p className="text-base font-[600] mx-auto text-white text-center rounded-[5px] shadow-[2px_2px_rgba(0,0,0,.3137254902)]"
                                        style={{
-                                           background: '-webkit-linear-gradient(0deg, rgb(255, 0, 255) 0%, rgb(255, 77, 255) 100%)',
+                                           background: '-webkit-linear-gradient(0deg, rgba(50, 222, 27, 0.66), rgba(117, 255, 83, 0.667))',
                                            textShadow: 'rgba(0, 0, 0, 0.314) 2px 2px',
                                            padding: '2px 20px 2.5px'
                                        }}>
@@ -295,16 +294,14 @@ const Team: React.FC<Roles> = ({
                                 style={boxStyle}
                                 variants={itemVariants}
                             >
-                                <img src={youtuber.skinUrl} alt="" className="w-[80px] mb-4 md:mb-0" />
+                                <img src={getSkinUrl(youtuber.realname, youtuber.skinUrl)} alt="" className="w-[80px] mb-4 md:mb-0" />
                                 <div className="flex flex-col items-center text-center md:items-center mx-auto">
                                     <p className="font-semibold text-white text-[18px] mb-[7px] flex items-center justify-center">
                                         {youtuber.realname}
-                                        <span
-                                            className={`w-3 relative top-[0.5px] h-3 rounded-full ml-2 ${youtuber.isLogged === 1 ? 'bg-green-500' : 'bg-red-500'}`}></span>
                                     </p>
                                     <p className="text-base font-[600] mx-auto text-white text-center rounded-[5px] shadow-[2px_2px_rgba(0,0,0,.3137254902)]"
                                        style={{
-                                           background: '-webkit-linear-gradient(0deg, rgb(128, 0, 255) 0%, rgb(180, 29, 255) 100%)',
+                                           background: '-webkit-linear-gradient(0deg, rgb(255, 0, 0) 0%, rgb(253, 253, 253) 100%)',
                                            textShadow: 'rgba(0, 0, 0, 0.314) 2px 2px',
                                            padding: '2px 20px 2.5px'
                                        }}>

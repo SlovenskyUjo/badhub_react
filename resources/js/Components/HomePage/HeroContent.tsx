@@ -5,10 +5,11 @@ import { IoConstruct, IoGameControllerOutline } from "react-icons/io5";
 import { FaDiscord } from "react-icons/fa";
 import Swal from "sweetalert2";
 import '../../../css/app.css';
+import axios from "axios";
 
 const HeroContent = () => {
     const [presenceCount, setPresenceCount] = useState(null);
-    const [onlinePlayers, setOnlinePlayers] = useState(null);
+    const [players, setPlayers] = useState(null);
     const ipAddress = 'mc.badhub.cz';
 
     useEffect(() => {
@@ -23,19 +24,17 @@ const HeroContent = () => {
             }
         };
 
-        const fetchOnlinePlayers = async () => {
+        const fetchData = async () => {
             try {
-                const response = await fetch('/api/players/online');
-                const data = await response.json();
-
-                setOnlinePlayers(data.onlinePlayers);
+                const response = await axios.get('/api/players/online');
+                setPlayers(response.data.players);
             } catch (error) {
-                console.error("Failed to fetch online player:", error)
+                console.error('Error fetching server info:', error);
             }
-        }
+        };
 
         fetchInviteData();
-        fetchOnlinePlayers();
+        fetchData();
     }, []);
 
     const handleCopyIP = () => {
@@ -150,12 +149,7 @@ const HeroContent = () => {
                         </h2>
                         <hr className="border-0 rounded mb-5 mx-auto md:ml-0 w-12 border-b-[1px] border-t-2 border-[#32de1b]" />
                         <p className="text-lg mb-4">
-                            Server BadHub.cz bol založený v roku 2023 tromi priateľmi za účelom poskytnutia nezabudnuteľného
-                            zážitku zo hry,
-                            ktorý zatiaľ nikde inde nenájdete. Radi by sme vám BadHub k niečomu prirovnali, ale zatiaľ
-                            neexistuje žiadna
-                            alternatívna forma, ktorú by to bolo možné. Poďte sa sami presvedčiť a zažiť si nový pohľad na
-                            starú hru na
+                            Server BadHub.cz byl založen v roce 2023 třemi přáteli za účelem poskytnutí nezapomenutelného zážitku ze hry, který zatím nikde jinde nenajdete. Rádi bychom vám BadHub k něčemu přirovnali, ale zatím neexistuje žádná alternativní forma, kterou by to bylo možné. Pojď se sám přesvědčit a zažít nový pohled na starou hru na
                             <strong> mc.badhub.cz.</strong>
                         </p>
 
@@ -172,7 +166,7 @@ const HeroContent = () => {
                                 transition={{ duration: 0.2 }}
                             >
                                 <IoGameControllerOutline className="text-lg" />
-                                <span className="ml-2">Online hráčov: {onlinePlayers}</span>
+                                <span className="ml-2">Online hráčov: {players}</span>
                             </motion.button>
                             <a href="https://discord.com/invite/9vhUGpzrwt" target="_blank" rel="noopener noreferrer">
                                 <motion.button

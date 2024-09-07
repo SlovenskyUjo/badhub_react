@@ -21,13 +21,12 @@ class TeamController extends Controller
             $descriptions = [
                 'ItzRegen' => 'Vývoj serveru a dizajn',
                 'BadFoxxx' => 'Marketingová stránka serveru',
-                'Zodiik' => 'Správa a chod serveru'
             ];
 
             return [
                 'primary_group' => $owner->primary_group,
                 'realname' => $owner->realname,
-                'skinUrl' => $this->getSkinUrl($owner->realname),
+                'skinUrl' => $this->showSkin($owner->realname),
                 'isLogged' => $owner->isLogged,
                 'description' => $descriptions[$owner->realname] ?? '',
             ];
@@ -42,7 +41,7 @@ class TeamController extends Controller
             return [
                 'realname' => $developer->realname,
                 'primary_group' => $developer->primary_group,
-                'skinUrl' => $this->getSkinUrl($developer->realname),
+                'skinUrl' => $this->showSkin($developer->realname),
                 'isLogged' => $developer->isLogged,
                 'description' => $descriptions[$developer->realname] ?? '',
             ];
@@ -57,7 +56,7 @@ class TeamController extends Controller
                 'username' => $helper->username,
                 'primary_group' => $helper->primary_group,
                 'realname' => $helper->realname,
-                'skinUrl' => $this->getSkinUrl($helper->realname),
+                'skinUrl' => $this->showSkin($helper->realname),
                 'isLogged' => $helper->isLogged,
                 'description' => $descriptions[$helper->realname] ?? '',
             ];
@@ -68,7 +67,7 @@ class TeamController extends Controller
                 'username' => $builder->username,
                 'primary_group' => $builder->primary_group,
                 'realname' => $builder->realname,
-                'skinUrl' => $this->getSkinUrl($builder->realname),
+                'skinUrl' => $this->showSkin($builder->realname),
                 'isLogged' => $builder->isLogged,
             ];
         });
@@ -78,7 +77,7 @@ class TeamController extends Controller
                 'username' => $youtuber->username,
                 'primary_group' => $youtuber->primary_group,
                 'realname' => $youtuber->realname,
-                'skinUrl' => $this->getSkinUrl($youtuber->realname),
+                'skinUrl' => $this->showSkin($youtuber->realname),
                 'isLogged' => $youtuber->isLogged,
             ];
         });
@@ -101,20 +100,49 @@ class TeamController extends Controller
         });
     }
 
-
-    private function getSkinUrl($realname)
+    private function showSkin($username)
     {
-        $url = "https://visage.surgeplay.com/bust/256/$realname";
-        if ($this->urlExists($url)) {
-            return $url;
-        } else {
-            return "https://visage.surgeplay.com/bust/256/X-Steve";
+        // Získajte Mojang UUID na základe používateľského mena
+        $mojangUUID = $this->getMojangUUID($username);
+
+        // Ak má Mojang UUID, vráťte URL pre skin podľa UUID
+        if ($mojangUUID) {
+            return "https://visage.surgeplay.com/bust/256/$mojangUUID.png";
         }
+
+        // Predvolený skin pre hráčov bez UUID
+        return "https://visage.surgeplay.com/bust/256/X-Steve";
     }
 
-    private function urlExists($url)
+
+    private function getMojangUUID($username)
     {
-        $headers = @get_headers($url);
-        return stripos($headers[0], "200 OK") ? true : false;
+        // Mojang API URL
+        $url = "https://api.mojang.com/users/profiles/minecraft/$username";
+
+        // Inicializujeme CURL pre volanie API
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // Uložíme odpoveď z Mojang API
+        $response = curl_exec($ch);
+
+        // Zatvoríme CURL spojenie
+        curl_close($ch);
+
+        // Skontrolujeme, či odpoveď nie je prázdna
+        if ($response) {
+            // Odpoveď dekódujeme do JSON formátu
+            $data = json_decode($response, true);
+            return $data['id'] ?? null; // Vrátime UUID alebo null, ak neexistuje
+        }
+
+        return null;
     }
+
+
+
+
+
 }
