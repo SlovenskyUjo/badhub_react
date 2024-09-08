@@ -191,7 +191,7 @@ const HeroContent = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.4 }}
                     >
-                        <img src={Logo} alt="BadHub Logo" className="max-w-xs md:max-w-md h-auto" />
+                        <img src={Logo} alt="BadHub Logo" className="max-w-xs md:max-w-[30rem] h-auto" />
                     </motion.div>
                 </div>
             </motion.div>
