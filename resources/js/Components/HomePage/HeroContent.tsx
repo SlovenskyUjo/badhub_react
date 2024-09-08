@@ -132,7 +132,7 @@ const HeroContent = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
             >
-                <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl">
+                <div className="flex flex-col md:flex-row items-center justify-between mt-10 w-full max-w-6xl">
                     <motion.div
                         className="md:w-1/2 text-center md:text-left"
                         initial={{ opacity: 0, y: 30 }}
@@ -156,7 +156,7 @@ const HeroContent = () => {
                         <div className="flex flex-col items-center sm:flex-row sm:justify-center gap-4 mb-4 mt-5">
                             <motion.button
                                 onClick={() => handleCopyIP()}
-                                className="inline-flex items-center px-5 py-2 bg-[#32de1b] border border-transparent rounded-md font-bold text-sm text-[#125808] uppercase tracking-widest hover:bg-[#32e81a] transition ease-in-out duration-150"
+                                className="inline-flex items-center px-5 py-3 bg-[#32de1b] border border-transparent rounded-md font-bold text-sm text-[#125808] uppercase tracking-widest hover:bg-[#32e81a] transition ease-in-out duration-150"
                                 style={{
                                     boxShadow: '0 3px #125808',
                                 }}
@@ -166,11 +166,11 @@ const HeroContent = () => {
                                 transition={{ duration: 0.2 }}
                             >
                                 <IoGameControllerOutline className="text-lg" />
-                                <span className="ml-2">Online hráčov: {players}</span>
+                                <span className="ml-2">Online hráčů: {players}</span>
                             </motion.button>
                             <a href="https://discord.com/invite/9vhUGpzrwt" target="_blank" rel="noopener noreferrer">
                                 <motion.button
-                                    className="inline-flex items-center px-5 py-2 bg-[#7289da] border border-transparent rounded-md font-bold text-sm text-[#0d1d55] uppercase tracking-widest hover:bg-[#6880d4] transition ease-in-out duration-150"
+                                    className="inline-flex items-center px-5 py-3 bg-[#7289da] border border-transparent rounded-md font-bold text-sm text-[#0d1d55] uppercase tracking-widest hover:bg-[#6880d4] transition ease-in-out duration-150"
                                     style={{
                                         boxShadow: '0 3px #0d1d55',
                                     }}
@@ -180,7 +180,7 @@ const HeroContent = () => {
                                     transition={{ duration: 0.2 }}
                                 >
                                     <FaDiscord className="text-lg" />
-                                    <span className="ml-2">Online členov: {presenceCount}</span>
+                                    <span className="ml-2">Online členů: {presenceCount}</span>
                                 </motion.button>
                             </a>
                         </div>

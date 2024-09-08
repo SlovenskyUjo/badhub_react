@@ -102,47 +102,11 @@ class TeamController extends Controller
 
     private function showSkin($username)
     {
-        // Získajte Mojang UUID na základe používateľského mena
-        $mojangUUID = $this->getMojangUUID($username);
-
-        // Ak má Mojang UUID, vráťte URL pre skin podľa UUID
-        if ($mojangUUID) {
-            return "https://visage.surgeplay.com/bust/256/$mojangUUID.png";
+        if ($username === 'zekiCZ') {
+            return "https://visage.surgeplay.com/bust/256/X-Steve.png";
         }
 
-        // Predvolený skin pre hráčov bez UUID
-        return "https://visage.surgeplay.com/bust/256/X-Steve";
+        // Inak vráť skin na základe používateľského mena
+        return "https://visage.surgeplay.com/bust/256/$username.png";
     }
-
-
-    private function getMojangUUID($username)
-    {
-        // Mojang API URL
-        $url = "https://api.mojang.com/users/profiles/minecraft/$username";
-
-        // Inicializujeme CURL pre volanie API
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        // Uložíme odpoveď z Mojang API
-        $response = curl_exec($ch);
-
-        // Zatvoríme CURL spojenie
-        curl_close($ch);
-
-        // Skontrolujeme, či odpoveď nie je prázdna
-        if ($response) {
-            // Odpoveď dekódujeme do JSON formátu
-            $data = json_decode($response, true);
-            return $data['id'] ?? null; // Vrátime UUID alebo null, ak neexistuje
-        }
-
-        return null;
-    }
-
-
-
-
-
 }
