@@ -23,7 +23,7 @@ const Hero = () => {
                 </div>
             )}
             <Navbar/>
-            <BannerImage/>
+            <BannerImage />
             <HeroContent/>
         </div>
     )
