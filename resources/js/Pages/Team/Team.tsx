@@ -235,89 +235,95 @@ const Team: React.FC<Roles> = ({
                 </motion.div>
 
                 {/* Builder Team */}
-                <motion.div
-                    className="max-w-5xl mx-auto px-4 mb-[4rem]"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <h1 className="text-[25px] font-[700] mb-6 text-center rounded-xl py-1 uppercase fade-in"
-                        style={gradientStyle}>
-                        Builder Team
-                    </h1>
-                    <div className="flex flex-col items-center gap-4 md:flex-row md:flex-wrap md:justify-center">
-                        {builders.map((builder) => (
-                            <motion.div
-                                key={builder.uuid}
-                                className="flex flex-col md:flex-row items-center bg-[#0d0d13] rounded-lg p-4 max-w-xs w-full"
-                                style={boxStyle}
-                                variants={itemVariants}
-                            >
-                                <img src={getSkinUrl(builder.realname, builder.skinUrl)} alt="" className="w-[80px] mb-4 md:mb-0" />
-                                <div className="flex flex-col items-center text-center md:items-center mx-auto">
-                                    <p className="font-semibold text-white text-[18px] mb-[7px] flex items-center justify-center">
-                                        {builder.realname}
-                                    </p>
-                                    <p className="text-base font-[600] mx-auto text-white text-center rounded-[5px] shadow-[2px_2px_rgba(0,0,0,.3137254902)]"
-                                       style={{
-                                           background: '-webkit-linear-gradient(0deg, rgba(50, 222, 27, 0.66), rgba(117, 255, 83, 0.667))',
-                                           textShadow: 'rgba(0, 0, 0, 0.314) 2px 2px',
-                                           padding: '2px 20px 2.5px'
-                                       }}>
-                                        {capitalize(builder.primary_group)}
-                                    </p>
-                                    <p className="text-gray-400 tracking-wider text-xs italic mt-2 text-center">
-                                        {builder.description}
-                                    </p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
+                {builders.length > 0 && (
+                    <motion.div
+                        className="max-w-5xl mx-auto px-4 mb-[4rem]"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        <h1 className="text-[25px] font-[700] mb-6 text-center rounded-xl py-1 uppercase fade-in"
+                            style={gradientStyle}>
+                            Builder Team
+                        </h1>
+                        <div className="flex flex-col items-center gap-4 md:flex-row md:flex-wrap md:justify-center">
+                            {builders.map((builder) => (
+                                <motion.div
+                                    key={builder.uuid}
+                                    className="flex flex-col md:flex-row items-center bg-[#0d0d13] rounded-lg p-4 max-w-xs w-full"
+                                    style={boxStyle}
+                                    variants={itemVariants}
+                                >
+                                    <img src={getSkinUrl(builder.realname, builder.skinUrl)} alt=""
+                                         className="w-[80px] mb-4 md:mb-0"/>
+                                    <div className="flex flex-col items-center text-center md:items-center mx-auto">
+                                        <p className="font-semibold text-white text-[18px] mb-[7px] flex items-center justify-center">
+                                            {builder.realname}
+                                        </p>
+                                        <p className="text-base font-[600] mx-auto text-white text-center rounded-[5px] shadow-[2px_2px_rgba(0,0,0,.3137254902)]"
+                                           style={{
+                                               background: '-webkit-linear-gradient(0deg, rgba(50, 222, 27, 0.66), rgba(117, 255, 83, 0.667))',
+                                               textShadow: 'rgba(0, 0, 0, 0.314) 2px 2px',
+                                               padding: '2px 20px 2.5px'
+                                           }}>
+                                            {capitalize(builder.primary_group)}
+                                        </p>
+                                        <p className="text-gray-400 tracking-wider text-xs italic mt-2 text-center">
+                                            {builder.description}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
 
                 {/* YouTuber Team */}
-                <motion.div
-                    className="max-w-5xl mx-auto px-4 mb-[4rem]"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <h1 className="text-[25px] font-[700] mb-6 text-center rounded-xl py-1 uppercase fade-in"
-                        style={gradientStyle}>
-                        YouTuber Team
-                    </h1>
-                    <div className="flex flex-col items-center gap-4 md:flex-row md:flex-wrap md:justify-center">
-                        {youtubers.map((youtuber) => (
-                            <motion.div
-                                key={youtuber.uuid}
-                                className="flex flex-col md:flex-row items-center bg-[#0d0d13] rounded-lg p-4 max-w-xs w-full"
-                                style={boxStyle}
-                                variants={itemVariants}
-                            >
-                                <img src={getSkinUrl(youtuber.realname, youtuber.skinUrl)} alt="" className="w-[80px] mb-4 md:mb-0" />
-                                <div className="flex flex-col items-center text-center md:items-center mx-auto">
-                                    <p className="font-semibold text-white text-[18px] mb-[7px] flex items-center justify-center">
-                                        {youtuber.realname}
-                                    </p>
-                                    <p className="text-base font-[600] mx-auto text-white text-center rounded-[5px] shadow-[2px_2px_rgba(0,0,0,.3137254902)]"
-                                       style={{
-                                           background: '-webkit-linear-gradient(0deg, rgb(255, 0, 0) 0%, rgb(253, 253, 253) 100%)',
-                                           textShadow: 'rgba(0, 0, 0, 0.314) 2px 2px',
-                                           padding: '2px 20px 2.5px'
-                                       }}>
-                                        {capitalize(youtuber.primary_group)}
-                                    </p>
-                                    <p className="text-gray-400 tracking-wider text-xs italic mt-2 text-center">
+                {youtubers.length > 0 && (
+                    <motion.div
+                        className="max-w-5xl mx-auto px-4 mb-[4rem]"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        <h1 className="text-[25px] font-[700] mb-6 text-center rounded-xl py-1 uppercase fade-in"
+                            style={gradientStyle}>
+                            YouTuber Team
+                        </h1>
+                        <div className="flex flex-col items-center gap-4 md:flex-row md:flex-wrap md:justify-center">
+                            {youtubers.map((youtuber) => (
+                                <motion.div
+                                    key={youtuber.uuid}
+                                    className="flex flex-col md:flex-row items-center bg-[#0d0d13] rounded-lg p-4 max-w-xs w-full"
+                                    style={boxStyle}
+                                    variants={itemVariants}
+                                >
+                                    <img src={getSkinUrl(youtuber.realname, youtuber.skinUrl)} alt=""
+                                         className="w-[80px] mb-4 md:mb-0"/>
+                                    <div className="flex flex-col items-center text-center md:items-center mx-auto">
+                                        <p className="font-semibold text-white text-[18px] mb-[7px] flex items-center justify-center">
+                                            {youtuber.realname}
+                                        </p>
+                                        <p className="text-base font-[600] mx-auto text-white text-center rounded-[5px] shadow-[2px_2px_rgba(0,0,0,.3137254902)]"
+                                           style={{
+                                               background: '-webkit-linear-gradient(0deg, rgb(255, 0, 0) 0%, rgb(253, 253, 253) 100%)',
+                                               textShadow: 'rgba(0, 0, 0, 0.314) 2px 2px',
+                                               padding: '2px 20px 2.5px'
+                                           }}>
+                                            {capitalize(youtuber.primary_group)}
+                                        </p>
+                                        <p className="text-gray-400 tracking-wider text-xs italic mt-2 text-center">
                                         {youtuber.description}
-                                    </p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
             </section>
 
-            <Footer />
+            <Footer/>
         </div>
     );
 };
