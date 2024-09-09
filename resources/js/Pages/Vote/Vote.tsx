@@ -22,7 +22,7 @@ const Vote = () => {
 
     return (
         <div className="min-h-screen flex flex-col">
-            <Head title="Hlasovani"/>
+            <Head title="Hlasování"/>
             <Navbar/>
 
             {isLoading && (
