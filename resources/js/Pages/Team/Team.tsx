@@ -144,8 +144,9 @@ const Team: React.FC<Roles> = ({
                                         Majitel
                                     </p>
                                     <p className="text-gray-400 tracking-wider text-xs italic mt-2 text-center">
-                                        „{owner.description}“
+                                        {['ItzRegen', 'BadFoxxx', 'Zodiik'].includes(owner.realname) ? `„${owner.description}“` : owner.description}
                                     </p>
+
                                 </div>
                             </motion.div>
                         ))}

@@ -21,6 +21,7 @@ class TeamController extends Controller
             $descriptions = [
                 'ItzRegen' => 'Vývoj serveru a dizajn',
                 'BadFoxxx' => 'Marketingová stránka serveru',
+                'Zodiik' => 'Správa a chod serveru'
             ];
 
             return [
